@@ -1,0 +1,166 @@
+Django :
+MVT : Model View Template 
+
+Installation -
+  pip install django
+  django-admin startproject myProjectName
+Basic Setup & Running
+  python manage.py runserver
+By default it runs on 127.0.0.1:8000/
+
+  python manage.py runserver 127.0.0.1:9090/
+
+-------------------------------------
+First Task : execute a HTML Code inside python django .
+Step 1 : create project 
+django-admin runserver myProjectName
+
+cd myProjectName
+
+Step 2 : Create views.py. Define a function test() that returns http response .
+
+File Create : views.py
+
+from django.http import HttpResponse
+def test(request):
+  return HttpResponse("<h1>Hi NIC</h1>")
+
+Then in urls.py 
+
+from .views import test
+
+urlpatterns = 
+[
+  path('index/',test )
+]
+
+--- Execute >> it will run . <h1>Hi Nic </h1> on Web Page 
+
+In this way we understand 
+- About views >>> In view we define the action against a particular URL hit .
+
+---------------------------------
+Second Task : 
+Create an app inside Django Project.
+
+django-admin startapp loginApp
+django-admin startapp studentMIS
+django-admin startapp facultyMIS
+
+add in settings.py
+INSTALLED_APPS [
+  'loginApp',
+  'studentMIS',
+]
+-----------------------------------
+Third Task :
+Create a template & execute the webpages kept inside it .
+
+1. Create a templates folder inside ProjectRoot.
+2. Inside template create about.HTML
+
+3. Go to settings.py
+> in Templates 
+        'DIRS': [os.path.join(BASE_DIR,"templates")],
+
+4. Go to views.py , which we create .
+
+from django.shortcuts import render
+def about(request):
+    return render(request,'about.html',{})
+
+5 . Go to urls.py , 
+
+from .views import about
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('index/',about)
+]
+
+-----------------------------------
+Fourth Task :
+include django code in html file --
+{% include navbar.html %}
+do not forget to create entry of navbar.html in urls.py & views.py .
+-----------------------------------
+Django Udemy : 
+
+>> django-admin startproject firstProject
+>> django-admin startapp firstApp 
+>> python manage.py startapp secondApp
+
+>> firstApp/views.py 
+
+from django.shortcuts import render
+from django.http import HttpResponse
+import datetime
+# Create your views here.
+def test(request):
+    return HttpResponse("<h1>Hi !! This is Pratush</h1>")
+
+def displayDateTime(request):
+    dt = datetime.datetime.now()
+    s = "<b>Current Date and Time :</b>"+ str(dt)
+    return HttpResponse(s)
+
+>> firstProject/urls.py
+
+from firstApp import views
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('hello/',views.test),
+    path('hi/',views.displayDateTime),
+]
+-----------------------------------------------
+10:59 AM 7/12/2023
+
+>> django-admin startapp secondApp 
+>> secondApp/views.py
+
+from django.shortcuts import render
+from django.http import HttpResponse
+import datetime
+# Create your views here.
+def test2(request):
+    return HttpResponse("<h1>Hi !! This is Prstush</h1>")
+
+>> firstProject/urls.py
+
+from secondApp.views import test2
+urlpatterns = [
+    path('alpha/',test2)
+]
+
+----------------------
+Creating urls.py in different app : 
+
+firstApp/urls.py 
+
+from . import views
+from django.urls import path
+
+urlpatterns = [    
+    path('test/',views.test),
+
+]
+==========================
+==========================
+firstProject/urls.py
+
+from django.conf.urls import include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('firstApp/',include('firstApp.urls')),
+    path('secondApp/', include('secondApp.urls')),
+]
+---------------------------
+Virtual Environment 
+
+>> pip install venv 
+--------------------------
+
+Template 
+BASE_DIR  : Project Directory 
