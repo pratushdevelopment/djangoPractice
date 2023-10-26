@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}About Us{% endblock %}
+
+{% block content %}
+    <h1>About Us</h1>
+
+    {{ variable_name }} <br>
+    {{ variable_value }} 
+    
+    {% for number in numbers %}
+ {% if number < 2 %}
+Less than {{ number }}
+ {% elif number > 5 %}
+
+ HI !! {{ number }}
+
+ {% endif %}
+      <br> 
+    {% endfor %} 
+    <p>We are a fantastic company doing amazing things!</p>
+{% endblock %}

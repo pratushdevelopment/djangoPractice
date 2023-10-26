@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Employee{% endblock %}
+
+{% block content %}
+<div class="w3-card-4 w3-padding-large">
+    <h2>Create Employee</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="w3-row-padding">
+            <div class="w3-col m4">
+                <label for="{{ form.name.id_for_label }}" class="w3-text-grey">Name:</label>
+            </div>
+            <div class="w3-col m8">
+                {{ form.name }}
+            </div>
+        </div>
+        <div class="w3-row-padding">
+            <div class="w3-col m4">
+                <label for="{{ form.age.id_for_label }}" class="w3-text-grey">Age:</label>
+            </div>
+            <div class="w3-col m8">
+                {{ form.age }}
+            </div>
+        </div>
+        <div class="w3-row-padding">
+            <div class="w3-col m4">
+                <label for="{{ form.salary.id_for_label }}" class="w3-text-grey">Salary:</label>
+            </div>
+            <div class="w3-col m8">
+                {{ form.salary }}
+            </div>
+        </div>
+        <div class="w3-row-padding w3-margin-top">
+            <div class="w3-col m12">
+                <button class="w3-button w3-green w3-right" type="submit">Save</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

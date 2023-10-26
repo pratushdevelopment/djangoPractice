@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Add some CSS links below to make the website impressive -->
+
+  <!-- Example 1: Normalize CSS to reset default styles across different browsers -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+
+  <!-- Example 2: Google Fonts for beautiful typography -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+
+  <!-- Example 3: Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <!-- Example 4: Animate.css for adding animation effects -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+  <!-- Example 5: Bootstrap for responsive layout and components -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.5.3/css/bootstrap.min.css">
+
+  <!-- Example 6: Your custom CSS file for additional styles -->
+  <link rel="stylesheet" href="path/to/your/custom.css">
+    <title>Book Form</title>
+</head>
+<body>
+    <h1>{% if form.instance.pk %}Edit Book{% else %}Add New Book{% endif %}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Save">
+    </form>
+</body>
+</html>

@@ -1,0 +1,43 @@
+ul {
+    list-style-type: none;
+    padding: 10px;
+    margin: 0;
+}
+
+li {
+    padding: 5px;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.green {
+    background-color: green;
+}
+
+.red {
+    background-color: red;
+}
+ul.horizontal-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Use flexbox to arrange the list items horizontally */
+}
+
+ul.horizontal-list li {
+    padding-left: 20px;
+    display: inline-block; /* Display list items as inline-block to place them side by side */
+    position: relative;
+}
+
+ul.horizontal-list li::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    /* background-color: #000; Adjust the color as per your requirement */
+}

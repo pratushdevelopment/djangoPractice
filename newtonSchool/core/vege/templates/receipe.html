@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Recipe</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-5 form-container">
+        <h1 class="mb-4">Add Recipe</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="recipeName">Recipe Name</label>
+                <input name="recipe_name" type="text" class="form-control" id="recipeName" placeholder="Enter recipe name" required>
+            </div>
+            <div class="form-group">
+                <label for="recipeDescription">Recipe Description</label>
+                <textarea name="recipe_description" class="form-control" id="recipeDescription" rows="5"
+                    placeholder="Enter recipe description" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="recipeImage">Recipe Image</label>
+                <input name="recipe_image" type="file" class="form-control-file" id="recipeImage" accept="image/*" required>
+                <small class="form-text text-muted">Accepted formats: JPG, JPEG, PNG, GIF</small>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <div class="container mt-5">
+        <h1 class="mb-4">Recipe List</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Recipe Name</th>
+                    <th scope="col">Recipe Description</th>
+                    <th scope="col">Recipe Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for recipe in recipes %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ recipe.recipe_name }}</td>
+                    <td>{{ recipe.recipe_description }}</td>
+                    <td><img src="{{ recipe.recipe_image.url }}" alt="{{ recipe.recipe_name }}" class="img-thumbnail" width="100"></td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4">No recipes available.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+
+</body>
+
+</html>

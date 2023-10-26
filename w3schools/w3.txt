@@ -1,0 +1,133 @@
+Virtual Environment
+py -m venv myworld
+
+myworld\Scripts\activate
+(myworld) C:\Users\Administ>
+
+py -m pip install Django
+
+py --version
+
+django-admin --version
+
+django-admin startproject my_tennis_club
+
+python manage.py runserver
+
+py manage.py startapp members
+
+Views 
+
+my_tennis_club/members/views.py:
+
+from django.shortcuts import render
+from django.http import HttpResponse
+
+def members(request):
+    return HttpResponse("Hello world!")
+
+URLs
+my_tennis_club/urls.py:
+
+from django.contrib import admin
+from django.urls import path
+from members import views
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', views.members)
+]
+
+Templates 
+my_tennis_club/members/templates/myfirst.html:
+
+my_tennis_club/members/views.py:
+
+from django.http import HttpResponse
+from django.template import loader
+
+def members(request):
+  template = loader.get_template('myfirst.html')
+  return HttpResponse(template.render())
+
+my_tennis_club/my_tennis_club/settings.py:
+
+INSTALLED_APPS = [
+    'members'
+]
+
+After Changing 
+>>> py manage.py migrate
+
+py manage.py runserver
+
+Models 
+my_tennis_club/members/models.py:
+
+from django.db import models
+class Member(models.Model):
+  firstname = models.CharField(max_length=255)
+  lastname = models.CharField(max_length=255)
+
+
+>>> python manage.py makemigrations members
+>>> python manage.py migrate 
+
+>>> py manage.py sqlmigrate members 0001
+
+Django Insert Data
+
+Add Records
+>>> py manage.py shell
+>>> from members.models import Member
+>>> Member.objects.all()   -- Shows Table 
+
+>>> member = Member(firstname='Emil', lastname='Refsnes')
+>>> member.save()
+
+>>> Member.objects.all().values()
+
+Django Update 
+
+Update Records
+>>> from members.models import Member
+>>> x = Member.objects.all()[4]
+
+>>> x.firstname
+
+>>> x.firstname = "Stalikken"
+>>> x.save()
+
+>>> Member.objects.all().values()
+
+Django delete data 
+
+Delete Records
+>>> from members.models import Member
+>>> x = Member.objects.all()[5]
+>>> x.delete()
+
+Django Update data
+my_tennis_club/members/models.py:
+
+from django.db import models
+
+class Member(models.Model):
+  firstname = models.CharField(max_length=255)
+  lastname = models.CharField(max_length=255)
+  phone = models.IntegerField(null=True)
+  joined_date = models.DateField(null=True)
+
+
+>>> py manage.py makemigrations members
+
+>>> py manage.py migrate
+
+>>> from members.models import Member
+>>> x = Member.objects.all()[0]
+>>> x.phone = 5551234
+>>> x.joined_date = '2022-01-05'
+>>> x.save()
+
+
+>>> Member.objects.all().values()

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Employee{% endblock %}
+
+{% block content %}
+<div class="w3-card-4 w3-padding-large">
+    <h2>Edit Employee</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="{{ form.name.id_for_label }}">Name:</label>
+        {{ form.name }}
+        <br>
+        <label for="{{ form.age.id_for_label }}">Age:</label>
+        {{ form.age }}
+        <br>
+        <label for="{{ form.salary.id_for_label }}">Salary:</label>
+        {{ form.salary }}
+        <br>
+        <button class="w3-button w3-blue" type="submit">Save Changes</button>
+    </form>
+</div>
+{% endblock %}

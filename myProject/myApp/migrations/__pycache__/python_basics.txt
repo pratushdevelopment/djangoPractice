@@ -1,0 +1,184 @@
+Python
+high-level, interpreted programming language
+
+Features
+dynamic typing, 
+automatic memory management, 
+extensive standard library, and 
+support for multiple programming paradigms (procedural, object-oriented, and functional).
+
+python2 v/s python3
+backward incompatible 
+print statement (Python 2) vs. print() function (Python 3), 
+integer division (Python 2) vs. float division (Python 3), 
+changes in syntax and library functions.
+
+Data types -:
+Numeric types: int, float, complex
+Sequence types: list, tuple, string
+Mapping type: dictionary
+Set types: set, frozenset
+Boolean type: bool
+
+Control flow statements -:
+Conditional statements: if, elif, else
+Looping statements: for, while
+Loop control statements: break, continue
+
+Deep Copy and Shallow Copy -:
+It is in copy module of python 
+- deep copy - their is function deepcopy()
+- deep copy makes a copy of original object (say list ) and when some modifications are done it does not changes the original object .
+- Shallow copy - copy()
+- Shallow copy makes a copy with reference to object & modifications are done it changes the another object also .
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--------------------------------------------------------
+import copy 
+
+original_list = [5 , 1 , [6,9] ]
+shallowCopy_list = copy.copy(original_list)
+deepCopy_list = copy.deepcopy(original_list)
+
+original_list[2][0] = 4
+
+print(original_list)   # [5 , 1 , [4,9] ]
+print(shallowCopy_list)     # [5 , 1 , [4,9] ]
+print(deepCopy_list)   # [5 , 1 , [6,9] ]
+
+--------------------------------
+1. Numeric Types:
+   - int: 5, -10, 0.
+   - float: 3.14, -2.5, 0.0.
+   - complex:  2+3j, -1.5+0.5j.
+
+2. Sequence Types:
+
+list: ordered collection of elements enclosed in square brackets ([]). 
+   - Elements can be of any data type, and they can be modified (mutable). 
+   - For example: [1, 2, 3], ['apple', 'banana', 'orange'].
+tuple: Similar to lists, but elements are enclosed in parentheses (()). 
+Tuples are immutable, meaning they cannot be modified after creation. 
+For example: (1, 2, 3), ('a', 'b', 'c').
+
+3. String:
+   - A sequence of characters enclosed in single quotes ('') or double quotes (""). Strings are immutable.
+   - They support various string operations and methods for manipulation and formatting. For example: 'Hello', "Python".
+
+4. Mapping Type:
+   - dictionary: An unordered collection of key-value pairs enclosed in curly braces ({}). Keys must be unique and immutable, while values can be of any type. For example: {'name': 'John', 'age': 25}.
+
+5. Set Types:
+   - set: An unordered collection of unique elements enclosed in curly braces ({}). Sets do not allow duplicate values. 
+   - For example: {1, 2, 3, 4}.
+   - frozenset: Similar to sets, but immutable. Once created, elements cannot be modified or added.
+
+6. Boolean:
+   - bool: Represents a boolean value, which can be either True or False. Booleans are used for logical operations and conditions.
+
+These are the main data types in Python. Each data type has its own set of operations and methods for performing specific tasks. Python also allows for type conversion using built-in functions like `int()`, `float()`, `str()`, etc., to convert values between different data types.
+
+control flow statements:
+Conditional statements: if, elif, else
+Looping statements: for, while
+Loop control statements: break, continue
+
+functions in python :
+def square(number):
+    result = number ** 2
+    return result
+
+# Call the function and print the result
+print(square(5))  # Output: 25
+
+global keyword 
+if you want to modify a global variable from within a function, you need to use the `global` keyword.
+
+example : global keyword
+count = 0  # Global variable
+
+def increment():
+    global count  # Declare 'count' as a global variable
+    count += 1   # Modifying the global variable
+
+def display():
+    print(count)  # Accessing the global variable
+
+increment()
+display()  # Output: 1
+
+increment()
+display()  # Output: 2
+-------------
+
+lambda function 
+
+anonymous function,
+small, one-line function that does not have a name. 
+
+lambda arguments: expression
+
+- used for single-purpose operations where defining a separate named function is unnecessary. 
+They are often used in conjunction with built-in functions like `map()`, `filter()`, and `reduce()`, which expect a function as an argument.
+
+Example 1: Simple addition of two numbers
+```python
+add = lambda x, y: x + y
+print(add(5, 3))  # Output: 8
+```
+Example 2: Squaring a number
+```python
+square = lambda x: x ** 2
+print(square(4))  # Output: 16
+```
+Example 3: Sorting a list of tuples based on the second element
+```python
+my_list = [(1, 4), (3, 2), (2, 5)]
+my_list.sort(key=lambda x: x[1])
+print(my_list)  # Output: [(3, 2), (1, 4), (2, 5)]
+```
+---------------------------------------------------
+import copy 
+
+original_list = [5 , 1 , [6,9] ]
+shallowCopy_list = copy.copy(original_list)
+deepCopy_list = copy.deepcopy(original_list)
+
+original_list[2][0] = 4
+
+print(original_list)   # [5 , 1 , [4,9] ]
+print(shallowCopy_list)     # [5 , 1 , [4,9] ]
+print(deepCopy_list)   # [5 , 1 , [6,9] ]
+----------------------------------------------------

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Application Detail</h1>
+    <dl class="row">
+        <dt class="col-sm-3">Name</dt>
+        <dd class="col-sm-9">{{ application.name }}</dd>
+        
+        <dt class="col-sm-3">URL</dt>
+        <dd class="col-sm-9">{{ application.url }}</dd>
+        
+        <dt class="col-sm-3">Technology Stack</dt>
+        <dd class="col-sm-9">{{ application.technology_stack }}</dd>
+        
+        <dt class="col-sm-3">Server Type</dt>
+        <dd class="col-sm-9">{{ application.get_server_type_display }}</dd>
+        
+        <dt class="col-sm-3">Operating System</dt>
+        <dd class="col-sm-9">{{ application.operating_system }}</dd>
+        
+        <dt class="col-sm-3">Monitoring</dt>
+        <dd class="col-sm-9">{{ application.monitoring }}</dd>
+        
+        <dt class="col-sm-3">Active</dt>
+        <dd class="col-sm-9">{{ application.active }}</dd>
+    </dl>
+    <a class="btn btn-secondary" href="{% url 'application_list' %}">Back to List</a>
+</div>
+{% endblock %}
